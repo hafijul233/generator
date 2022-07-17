@@ -2,9 +2,9 @@
 
 namespace Hafijul233\Generator;
 
+use Hafijul233\Generator\Commands\GeneratorCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Hafijul233\Generator\Commands\GeneratorCommand;
 
 class GeneratorServiceProvider extends PackageServiceProvider
 {
