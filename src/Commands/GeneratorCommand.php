@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Hafijul233\Generator\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class GeneratorCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'generator';
 
     public $description = 'My command';
 
