@@ -19,7 +19,7 @@ class GeneratorServiceProvider extends PackageServiceProvider
             ->name('generator')
             ->hasConfigFile('generator')
             ->hasViews('generator')
-            ->hasRoute('web.php');
+            ->hasRoute('web');
 /*            ->hasMigration('create_generator_table')
             ->hasCommand(GeneratorCommand::class);*/
     }
