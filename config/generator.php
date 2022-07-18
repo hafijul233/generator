@@ -73,12 +73,12 @@ return [
             'date' => 'Only Date',
             'time' => 'Only Time',
             'datetime' => 'Date Time',
+            'month' => 'Month Jan(1)-Dec(12)',
+            'year' => 'Year(1971-~)',
         ],
         'Slider Dropdown Fields' => [
             'range' => 'Range Slider',
             'range-dropdown' => 'Select Range Dropdown',
-            'password' => 'Password',
-            'textarea' => 'Large Text (Textarea)'
         ],
         'File Fields' => [
             'file' => 'Default file uploader',
@@ -86,5 +86,33 @@ return [
         ],
         'Relation Fields' => [
         ],
-    ]
+    ],
+
+    /**
+     *
+     */
+    'migration_types' => [
+        'text' => 'string',
+        'email' => 'string',
+        'password' => 'string',
+        'url' => 'string',
+        'textarea' => 'text',
+        'checkbox' => 'array',
+        'radio' => 'unsignedBigInteger',
+        'select' => 'unsignedBigInteger',
+        'multi-select' => 'unsignedBigInteger',
+        'integer' => 'unsignedBigInteger',
+        'float' => 'double',
+        'money' => 'double',
+        'mobile' => 'string',
+        'date' => 'date',
+        'time' => 'time',
+        'datetime' => 'dateTime',
+        'month' => 'smallInteger',
+        'year' => 'year',
+        'range' => 'smallInteger',
+        'range-dropdown' => 'smallInteger',
+        'file' => 'string',
+        'image' => 'string',
+    ],
 ];
