@@ -65,6 +65,9 @@
             "aliases": {
                 "Generator": "Hafijul233\\Generator\\Facades\\Generator"
             }
+        },
+        "branch-alias": {
+            "dev-main": "dev-develop"
         }
     },
     "minimum-stability": "dev",
