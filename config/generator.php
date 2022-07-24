@@ -2,50 +2,32 @@
 
 return [
 
-    /**
-     *
-     */
     'root_namespace' => 'App',
 
-    /**
-     *
-     */
     'root_path' => base_path('app'),
 
-    /**
-     *
-     */
     'resource_types' => [
         'options' => [
             'api' => 'Api Resource',
-            'web' => 'Http Web Resource'
+            'web' => 'Http Web Resource',
         ],
 
-        'default' => 'web'
+        'default' => 'web',
     ],
 
-    /**
-     *
-     */
     'model_options' => [
         'soft-delete' => 'Soft Delete',
         'audit' => 'Change Audit',
         'migration' => 'Create Table Migration',
-        'factory' => 'Create Faker Factory Class'
+        'factory' => 'Create Faker Factory Class',
     ],
 
-    /**
-     *
-     */
     'model_defaults' => [
         'soft-delete',
         'audit',
         'migration',
     ],
 
-    /**
-     *
-     */
     'field_types' => [
         'Text Fields' => [
             'text' => 'Text',
@@ -53,7 +35,7 @@ return [
             'password' => 'Password',
             'url' => 'Website URL',
 
-            'textarea' => 'Large Text (Textarea)'
+            'textarea' => 'Large Text (Textarea)',
         ],
         'Checkbox/Radio Fields' => [
             'checkbox' => 'Checkbox',
@@ -87,9 +69,6 @@ return [
         ],
     ],
 
-    /**
-     *
-     */
     'migration_types' => [
         'text' => 'string',
         'email' => 'string',
