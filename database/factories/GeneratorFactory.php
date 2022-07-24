@@ -4,10 +4,8 @@ namespace Hafijul233\Generator\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/*
-class ModelFactory extends Factory
+class GeneratorFactory extends Factory
 {
-    protected $model = YourModel::class;
 
     public function definition()
     {
@@ -16,4 +14,4 @@ class ModelFactory extends Factory
         ];
     }
 }
-*/
+
