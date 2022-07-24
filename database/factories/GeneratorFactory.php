@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * Class GeneratorFactory
- * @package Hafijul233\Generator\Database\Factories
+ *
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Hafijul233\Generator\Models\Generator>
  */
 class GeneratorFactory extends Factory

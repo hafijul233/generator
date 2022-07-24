@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Generator
- * @package Hafijul233\Generator\Models
  */
 class Generator extends Model
 {

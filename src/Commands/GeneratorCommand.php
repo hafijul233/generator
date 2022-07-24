@@ -6,7 +6,6 @@ use Illuminate\Console\Command;
 
 /**
  * Class GeneratorCommand
- * @package Hafijul233\Generator\Commands
  */
 class GeneratorCommand extends Command
 {

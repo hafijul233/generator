@@ -13,7 +13,6 @@ use Illuminate\Routing\Controller;
 
 /**
  * Class GeneratorController
- * @package Hafijul233\Generator\Controllers
  */
 class GeneratorController extends Controller
 {
@@ -26,7 +25,7 @@ class GeneratorController extends Controller
     {
         $generators = Generator::all();
 
-        return view("generator::generator.index", compact("generators"));
+        return view('generator::generator.index', compact('generators'));
     }
 
     /**
@@ -38,13 +37,13 @@ class GeneratorController extends Controller
     {
         $config = config('generator');
 
-        return view("generator::generator.create", compact("config"));
+        return view('generator::generator.create', compact('config'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param StoreGeneratorRequest $request
+     * @param  StoreGeneratorRequest  $request
      * @return RedirectResponse
      */
     public function store(StoreGeneratorRequest $request): RedirectResponse
@@ -59,32 +58,32 @@ class GeneratorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Application|Factory|View
      */
     public function show(Generator $generator): Factory|View|Application
     {
-        return view("generator::generator.", compact("generator"));
+        return view('generator::generator.', compact('generator'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Application|Factory|View
      */
     public function edit(Generator $generator): Factory|View|Application
     {
         $config = config('generator');
 
-        return view("generator::generator.", compact("config", "generator"));
+        return view('generator::generator.', compact('config', 'generator'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param UpdateGeneratorRequest $request
-     * @param Generator $generator
+     * @param  UpdateGeneratorRequest  $request
+     * @param  Generator  $generator
      * @return RedirectResponse
      */
     public function update(UpdateGeneratorRequest $request, Generator $generator): RedirectResponse
@@ -98,7 +97,7 @@ class GeneratorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return RedirectResponse
      */
     public function destroy(Generator $generator): RedirectResponse
