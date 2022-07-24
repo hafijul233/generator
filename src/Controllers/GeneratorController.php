@@ -48,7 +48,6 @@ class GeneratorController extends Controller
      */
     public function store(StoreGeneratorRequest $request): RedirectResponse
     {
-        dd($request->all());
         $generator = new Generator($request->all());
 
         $generator->save();
