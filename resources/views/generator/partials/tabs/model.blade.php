@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-4">
-        {!! \Form::nText('name', 'Full Namespace Path', null, true,
+        {!! \Form::nText('model', 'Full Namespace Path', null, true,
         ['placeholder' => 'Exclude Root namespace',
          'title' => 'use slash for directory separator']) !!}
 
@@ -28,16 +28,19 @@ $config['pagination']['options'],
                 <th scope="col">#</th>
                 <th scope="col">Field Name</th>
                 <th scope="col">Field Type</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Length</th>
+                <th scope="col">Required</th>
+
             </tr>
             </thead>
             <tbody>
             @for($i=1; $i<=10; $i++)
                 <tr>
                     <th scope="row">{{ $i }}</th>
-                    <td>{!! \Form::iText("name[{$i}]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
-                    <td>{!! \Form::iSelect("type[{$i}]", "Type", $config['field_types'],'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
-                    <td>{!! \Form::iText("length[{$i}]", "Length", null, true, null, null, ["placeholder" => 'Field Length']) !!}</td>
+                    <td>{!! \Form::iText("fields[{$i}][name]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
+                    <td>{!! \Form::iSelect("fields[{$i}][type]", "Type", $config['field_types'],'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
+                    <td>{!! \Form::iText("fields[{$i}][length]", "Length", null, true, null, null, ["placeholder" => 'Field Length']) !!}</td>
+                    <td>{!! \Form::iSelect("fields[{$i}][required]", "Required", ['Yes', 'No'], ['No'], false, null, null) !!}</td>
                 </tr>
             @endfor
             </tbody>
