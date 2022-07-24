@@ -1,5 +1,7 @@
 @extends('generator::layout.generator')
 
+@section('title', 'Create')
+
 @push('style')
 
 @endpush
