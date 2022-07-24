@@ -5,7 +5,10 @@ namespace Hafijul233\Generator\Controllers;
 use Hafijul233\Generator\Models\Generator;
 use Hafijul233\Generator\Requests\StoreGeneratorRequest;
 use Hafijul233\Generator\Requests\UpdateGeneratorRequest;
-use Illuminate\Http\Response;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Routing\Controller;
 
 /**
@@ -17,76 +20,91 @@ class GeneratorController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function index()
+    public function index(): Factory|View|Application
     {
-        return response();
+        $generators = Generator::all();
+
+        return view("generator::generator.index", compact("generators"));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
-    public function create()
+    public function create(): Factory|View|Application
     {
-        return response();
+        $config = config('generator');
+
+        return view("generator::generator.create", compact("config"));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StoreGeneratorRequest  $request
-     * @return Response
+     * @param StoreGeneratorRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreGeneratorRequest $request)
+    public function store(StoreGeneratorRequest $request): RedirectResponse
     {
-        return response();
+        $generator = new Generator($request->validated());
+
+        $generator->save();
+
+        return redirect()->back();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  Generator  $generator
-     * @return Response
+     * @param Generator $generator
+     * @return Application|Factory|View
      */
-    public function show(Generator $generator)
+    public function show(Generator $generator): Factory|View|Application
     {
-        return response();
+        return view("generator::generator.", compact("generator"));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  Generator  $generator
-     * @return Response
+     * @param Generator $generator
+     * @return Application|Factory|View
      */
-    public function edit(Generator $generator)
+    public function edit(Generator $generator): Factory|View|Application
     {
-        return response();
+        $config = config('generator');
+
+        return view("generator::generator.", compact("config", "generator"));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateGeneratorRequest  $request
-     * @param  Generator  $generator
-     * @return Response
+     * @param UpdateGeneratorRequest $request
+     * @param Generator $generator
+     * @return RedirectResponse
      */
-    public function update(UpdateGeneratorRequest $request, Generator $generator)
+    public function update(UpdateGeneratorRequest $request, Generator $generator): RedirectResponse
     {
-        return response();
+        $generator->fill($request->validated());
+        $generator->save();
+
+        return redirect()->back();
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Generator  $generator
-     * @return Response
+     * @param Generator $generator
+     * @return RedirectResponse
      */
-    public function destroy(Generator $generator)
+    public function destroy(Generator $generator): RedirectResponse
     {
-        return response();
+        $generator->delete();
+
+        return redirect()->back();
     }
 }
