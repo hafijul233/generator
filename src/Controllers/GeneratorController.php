@@ -2,9 +2,9 @@
 
 namespace Hafijul233\Generator\Controllers;
 
+use Hafijul233\Generator\Models\Generator;
 use Hafijul233\Generator\Requests\StoreGeneratorRequest;
 use Hafijul233\Generator\Requests\UpdateGeneratorRequest;
-use Hafijul233\Generator\Models\Generator;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
@@ -44,7 +44,7 @@ class GeneratorController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Response
      */
     public function show(Generator $generator)
@@ -55,7 +55,7 @@ class GeneratorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Response
      */
     public function edit(Generator $generator)
@@ -67,7 +67,7 @@ class GeneratorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  UpdateGeneratorRequest  $request
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Response
      */
     public function update(UpdateGeneratorRequest $request, Generator $generator)
@@ -78,7 +78,7 @@ class GeneratorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param Generator $generator
+     * @param  Generator  $generator
      * @return Response
      */
     public function destroy(Generator $generator)
