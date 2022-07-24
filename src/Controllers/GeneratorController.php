@@ -17,7 +17,7 @@ class GeneratorController extends Controller
      */
     public function index()
     {
-        //
+        return response();
     }
 
     /**
@@ -27,7 +27,7 @@ class GeneratorController extends Controller
      */
     public function create()
     {
-        //
+        return response();
     }
 
     /**
@@ -38,7 +38,7 @@ class GeneratorController extends Controller
      */
     public function store(StoreGeneratorRequest $request)
     {
-        //
+        return response();
     }
 
     /**
@@ -49,7 +49,7 @@ class GeneratorController extends Controller
      */
     public function show(Generator $generator)
     {
-        //
+        return response();
     }
 
     /**
@@ -60,7 +60,7 @@ class GeneratorController extends Controller
      */
     public function edit(Generator $generator)
     {
-        //
+        return response();
     }
 
     /**
@@ -72,7 +72,7 @@ class GeneratorController extends Controller
      */
     public function update(UpdateGeneratorRequest $request, Generator $generator)
     {
-        //
+        return response();
     }
 
     /**
@@ -83,6 +83,6 @@ class GeneratorController extends Controller
      */
     public function destroy(Generator $generator)
     {
-        //
+        return response();
     }
 }
