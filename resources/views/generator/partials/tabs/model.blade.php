@@ -3,6 +3,12 @@
         {!! \Form::nText('name', 'Full Namespace Path', null, true,
         ['placeholder' => 'Exclude Root namespace',
          'title' => 'use slash for directory separator']) !!}
+
+        {!! \Form::nSelect('pagination', 'Pagination Length',
+$config['pagination']['options'],
+ $config['pagination']['default'],
+  true) !!}
+
     </div>
     <div class="col-md-4">
         {!! \Form::nSelect('type', 'Resource Type',
