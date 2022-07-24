@@ -1,23 +1,26 @@
 <?php
 
-namespace Database\Factories;
+namespace Hafijul233\Generator\Database\Factories;
 
+use Hafijul233\Generator\Models\Generator;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Generator>
+ * Class GeneratorFactory
+ * @package Hafijul233\Generator\Database\Factories
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\Hafijul233\Generator\Models\Generator>
  */
 class GeneratorFactory extends Factory
 {
+    protected $model = Generator::class;
+
     /**
      * Define the model's default state.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function definition()
     {
-        return [
-            //
-        ];
+        return [];
     }
 }

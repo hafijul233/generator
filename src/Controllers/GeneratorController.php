@@ -8,6 +8,10 @@ use Hafijul233\Generator\Requests\UpdateGeneratorRequest;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
+/**
+ * Class GeneratorController
+ * @package Hafijul233\Generator\Controllers
+ */
 class GeneratorController extends Controller
 {
     /**
