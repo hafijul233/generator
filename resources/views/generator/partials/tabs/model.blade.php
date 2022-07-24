@@ -6,12 +6,12 @@
     </div>
     <div class="col-md-4">
         {!! \Form::nSelect('type', 'Resource Type',
-        config('generator.resource_types.options'),
-         config('generator.resource_types.default'),
+        $config['resource_types']['options'],
+         $config['resource_types']['default'],
           true) !!}
     </div>
     <div class="col-md-4">
-        {!! \Form::nCheckbox('options', 'Model Option(s)', config('generator.model_options'), config('generator.model_defaults'), true)  !!}
+        {!! \Form::nCheckbox('options', 'Model Option(s)', $config['model_options'], $config['model_defaults'], true)  !!}
     </div>
 </div>
 <div class="row">
@@ -30,7 +30,7 @@
                 <tr>
                     <th scope="row">{{ $i }}</th>
                     <td>{!! \Form::iText("name[{$i}]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
-                    <td>{!! \Form::iSelect("type[{$i}]", "Type", config('generator.field_types'),'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
+                    <td>{!! \Form::iSelect("type[{$i}]", "Type", $config['field_types'],'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
                     <td>{!! \Form::iText("length[{$i}]", "Length", null, true, null, null, ["placeholder" => 'Field Length']) !!}</td>
                 </tr>
             @endfor
