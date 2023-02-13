@@ -4,17 +4,15 @@
         ['placeholder' => 'Exclude Root namespace',
          'title' => 'use slash for directory separator']) !!}
 
-        {!! \Form::nSelect('pagination', 'Pagination Length',
-$config['pagination']['options'],
- $config['pagination']['default'],
-  true) !!}
+        {!! \Form::nSelect('pagination', 'Pagination Length', $config['pagination']['options'],$config['pagination']['default'], true) !!}
 
     </div>
     <div class="col-md-4">
-        {!! \Form::nSelect('type', 'Resource Type',
-        $config['resource_types']['options'],
-         $config['resource_types']['default'],
-          true) !!}
+
+        {!! \Form::nSelect('type', 'Resource Type', $config['resource_types']['options'], $config['resource_types']['default'], true) !!}
+
+        {!! \Form::nSelect('pattern', 'Design Pattern', $config['arc_pattern']['options'], $config['arc_pattern']['default']) !!}
+
     </div>
     <div class="col-md-4">
         {!! \Form::nCheckbox('options', 'Model Option(s)', $config['model_options'], $config['model_defaults'], true)  !!}
@@ -28,7 +26,6 @@ $config['pagination']['options'],
                 <th scope="col">#</th>
                 <th scope="col">Field Name</th>
                 <th scope="col">Field Type</th>
-                <th scope="col">Length</th>
                 <th scope="col">Required</th>
 
             </tr>
@@ -36,10 +33,9 @@ $config['pagination']['options'],
             <tbody>
             @for($i=1; $i<=10; $i++)
                 <tr>
-                    <th scope="row">{{ $i }}</th>
+                    <th scope="row" class="align-middle text-center">{{ $i }}</th>
                     <td>{!! \Form::iText("fields[{$i}][name]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
                     <td>{!! \Form::iSelect("fields[{$i}][type]", "Type", $config['field_types'],'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
-                    <td>{!! \Form::iText("fields[{$i}][length]", "Length", null, true, null, null, ["placeholder" => 'Field Length']) !!}</td>
                     <td>{!! \Form::iSelect("fields[{$i}][required]", "Required", ['Yes', 'No'], ['No'], false, null, null) !!}</td>
                 </tr>
             @endfor

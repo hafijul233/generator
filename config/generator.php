@@ -9,7 +9,7 @@ return [
     'resource_types' => [
         'options' => [
             'api' => 'Api Resource',
-            'web' => 'Http Web Resource',
+            'web' => 'Web Resource',
         ],
 
         'default' => 'web',
@@ -18,8 +18,9 @@ return [
     'model_options' => [
         'soft-delete' => 'Soft Delete',
         'audit' => 'Change Audit',
-        'migration' => 'Create Table Migration',
-        'factory' => 'Create Faker Factory Class',
+        'migration' => 'Create Migrations',
+        'factory' => 'Create Faker Factory',
+        'service' => 'Create a Service layer'
     ],
 
     'model_defaults' => [
@@ -107,4 +108,11 @@ return [
         ],
         'default' => 10,
     ],
+    'arc_pattern' => [
+        'options' => [
+            'mvc' => 'Model View Controller',
+            'rdp' => 'Repository Design Pattern',
+        ],
+        'default' => 'mvc'
+    ]
 ];
