@@ -27,16 +27,18 @@
                 <th scope="col">Field Name</th>
                 <th scope="col">Field Type</th>
                 <th scope="col">Required</th>
+                <th scope="col" width="40">Detail</th>
 
             </tr>
             </thead>
             <tbody>
             @for($i=1; $i<=10; $i++)
                 <tr>
-                    <th scope="row" class="align-middle text-center">{{ $i }}</th>
+                    <th scope="row" class="align-middle text-center" width="30">{{ $i }}</th>
                     <td>{!! \Form::iText("fields[{$i}][name]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
                     <td>{!! \Form::iSelect("fields[{$i}][type]", "Type", $config['field_types'],'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
-                    <td>{!! \Form::iSelect("fields[{$i}][required]", "Required", ['Yes', 'No'], ['No'], false, null, null) !!}</td>
+                    <td width="50">{!! \Form::iSelect("fields[{$i}][required]", "Required", ['Yes', 'No'], ['No'], false, null, null) !!}</td>
+                    <td width="80"><button class="btn btn-outline-primary" onclick="toggleDetails();"> >> </button> </td>
                 </tr>
             @endfor
             </tbody>
