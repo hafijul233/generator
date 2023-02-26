@@ -10,20 +10,13 @@
     <div class="container-fluid">
         <div class="card mt-3">
             <h4 class="card-header bg-success text-white font-weight-bold text-center">CRUD Generator</h4>
-                {!! Form::open(['route' => 'generators.store', 'method' => 'post']) !!}
             <div class="card-body">
                 @include('generator::generator.partials.form')
             </div>
             <div class="card-footer">
                 <button type="submit" class="btn btn-success">Create</button>
             </div>
-                {!! form::close() !!}
         </div>
     </div>
 @endsection
 
-@push('style')
-    <script>
-
-    </script>
-@endpush
