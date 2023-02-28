@@ -87,7 +87,7 @@ class SeedMakeCommand extends GeneratorCommand
 
         $seederPath = GenerateConfigReader::read('seeder');
 
-        return $path . $seederPath->getPath() . '/' . $this->getSeederName() . '.php';
+        return $path.$seederPath->getPath().'/'.$this->getSeederName().'.php';
     }
 
     /**
@@ -99,13 +99,11 @@ class SeedMakeCommand extends GeneratorCommand
     {
         $end = $this->option('master') ? 'DatabaseSeeder' : 'TableSeeder';
 
-        return Str::studly($this->argument('name')) . $end;
+        return Str::studly($this->argument('name')).$end;
     }
 
     /**
      * Get default namespace.
-     *
-     * @return string
      */
     public function getDefaultNamespace(): string
     {

@@ -36,23 +36,22 @@ abstract class GeneratorCommand extends Command
     {
         $path = str_replace('\\', '/', $this->getDestinationFilePath());
 
-            if (!$this->laravel['files']->isDirectory($dir = dirname($path))) {
-                $this->laravel['files']->makeDirectory($dir, 0777, true);
-            }
+        if (! $this->laravel['files']->isDirectory($dir = dirname($path))) {
+            $this->laravel['files']->makeDirectory($dir, 0777, true);
+        }
 
-            $contents = $this->getTemplateContents();
+        $contents = $this->getTemplateContents();
 
-            try {
-                $this->components->task("Generating file {$path}",function () use ($path,$contents) {
-                    $overwriteFile = $this->hasOption('force') ? $this->option('force') : false;
-                    (new FileGenerator($path, $contents))->withFileOverwrite($overwriteFile)->generate();
-                });
+        try {
+            $this->components->task("Generating file {$path}", function () use ($path, $contents) {
+                $overwriteFile = $this->hasOption('force') ? $this->option('force') : false;
+                (new FileGenerator($path, $contents))->withFileOverwrite($overwriteFile)->generate();
+            });
+        } catch (FileAlreadyExistException $e) {
+            $this->components->error("File : {$path} already exists.");
 
-            } catch (FileAlreadyExistException $e) {
-                $this->components->error("File : {$path} already exists.");
-
-                return E_ERROR;
-            }
+            return E_ERROR;
+        }
 
         return 0;
     }
@@ -69,8 +68,6 @@ abstract class GeneratorCommand extends Command
 
     /**
      * Get default namespace.
-     *
-     * @return string
      */
     public function getDefaultNamespace(): string
     {
@@ -80,8 +77,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param \Nwidart\Modules\Module $module
-     *
+     * @param  \Nwidart\Modules\Module  $module
      * @return string
      */
     public function getClassNamespace($module)
@@ -92,11 +88,11 @@ abstract class GeneratorCommand extends Command
 
         $namespace = $this->laravel['modules']->config('namespace');
 
-        $namespace .= '\\' . $module->getStudlyName();
+        $namespace .= '\\'.$module->getStudlyName();
 
-        $namespace .= '\\' . $this->getDefaultNamespace();
+        $namespace .= '\\'.$this->getDefaultNamespace();
 
-        $namespace .= '\\' . $extra;
+        $namespace .= '\\'.$extra;
 
         $namespace = str_replace('/', '\\', $namespace);
 

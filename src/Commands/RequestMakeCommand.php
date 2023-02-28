@@ -62,7 +62,7 @@ class RequestMakeCommand extends GeneratorCommand
 
         return (new Stub('/request.stub', [
             'NAMESPACE' => $this->getClassNamespace($module),
-            'CLASS'     => $this->getClass(),
+            'CLASS' => $this->getClass(),
         ]))->render();
     }
 
@@ -75,7 +75,7 @@ class RequestMakeCommand extends GeneratorCommand
 
         $requestPath = GenerateConfigReader::read('request');
 
-        return $path . $requestPath->getPath() . '/' . $this->getFileName() . '.php';
+        return $path.$requestPath->getPath().'/'.$this->getFileName().'.php';
     }
 
     /**

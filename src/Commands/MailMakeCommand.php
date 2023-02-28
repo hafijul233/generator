@@ -59,7 +59,7 @@ class MailMakeCommand extends GeneratorCommand
 
         return (new Stub('/mail.stub', [
             'NAMESPACE' => $this->getClassNamespace($module),
-            'CLASS'     => $this->getClass(),
+            'CLASS' => $this->getClass(),
         ]))->render();
     }
 
@@ -74,7 +74,7 @@ class MailMakeCommand extends GeneratorCommand
 
         $mailPath = GenerateConfigReader::read('emails');
 
-        return $path . $mailPath->getPath() . '/' . $this->getFileName() . '.php';
+        return $path.$mailPath->getPath().'/'.$this->getFileName().'.php';
     }
 
     /**
