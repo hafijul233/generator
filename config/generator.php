@@ -106,7 +106,7 @@ return [
             '100' => '100',
             '250' => '250',
             '500' => '500',
-            'custom' => 'Custom'
+            'custom' => 'Custom',
         ],
         'default' => 'default',
     ],
