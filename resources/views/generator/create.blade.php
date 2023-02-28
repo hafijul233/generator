@@ -14,7 +14,7 @@
                 @include('generator::generator.partials.form')
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-success">Create</button>
+                <button type="submit" class="btn btn-success" onclick="form_send_backend();">Create</button>
             </div>
         </div>
     </div>

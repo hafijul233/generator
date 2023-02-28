@@ -124,7 +124,7 @@
                         <th scope="col" width="200">Field Type</th>
                         <th scope="col" width="50">Required</th>
                         <th scope="col">Additional Rules</th>
-                        <th scope="col" class="align-middle text-center">Action</th>
+                        <th scope="col" class="align-middle text-center" width="130">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -206,10 +206,15 @@
                     <tfoot>
                     <tr>
                         <td colspan="6">
-                            <button type="button" class="btn btn-block btn-primary font-weight-bold" id="add-button"
-                                    data-toggle="modal"
-                                    data-target="#add-field-modal">Add More
-                            </button>
+                            <div class="row d-flex justify-content-center">
+                                <div class="col-sm-12 col-md-4">
+                                    <button type="button" class="btn btn-block btn-primary font-weight-bold"
+                                            id="add-button"
+                                            data-toggle="modal"
+                                            data-target="#add-field-modal">Add More
+                                    </button>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                     </tfoot>
@@ -238,7 +243,7 @@
 <!-- Add Field Modal -->
 <div class="modal fade" id="add-field-modal" data-backdrop="static" data-keyboard="false"
      aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header bg-primary">
                 <h5 class="modal-title text-white">New Field Information</h5>
@@ -254,7 +259,10 @@
                             <span style="color: #dc3545; font-weight:700">*</span>
                         </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="field-name"
+                            <input type="text"
+                                   oninput="create_title_from_name(this.value);"
+                                   class="form-control"
+                                   id="field-name"
                                    placeholder="Value will be used to store data">
                         </div>
                     </div>
@@ -330,15 +338,116 @@
                             Additional Rules
                         </label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="field-rules"
+                            <input list="rules" type="text" class="form-control" id="field-rules"
                                    placeholder="Values will be used to create form validation">
+                            <p id="rule-badges"></p>
+                            <datalist id="rules">
+                                <option value="accepted">
+                                <option value="accepted_if">
+                                <option value="active_url">
+                                <option value="after">
+                                <option value="after_or_equal">
+                                <option value="alpha">
+                                <option value="alpha_dash">
+                                <option value="alpha_numeric">
+                                <option value="array">
+                                <option value="ascii">
+                                <option value="bail">
+                                <option value="before">
+                                <option value="before_or_equal">
+                                <option value="between">
+                                <option value="boolean">
+                                <option value="confirmed">
+                                <option value="current_password">
+                                <option value="date">
+                                <option value="date_equals">
+                                <option value="date_format">
+                                <option value="decimal">
+                                <option value="declined">
+                                <option value="declined_if">
+                                <option value="different">
+                                <option value="digits">
+                                <option value="digits_between">
+                                <option value="dimensions">
+                                <option value="distinct">
+                                <option value="doesnt_start_with">
+                                <option value="doesnt_end_with">
+                                <option value="email">
+                                <option value="ends_with">
+                                <option value="enum">
+                                <option value="exclude">
+                                <option value="exclude_if">
+                                <option value="exclude_unless">
+                                <option value="exclude_with">
+                                <option value="exclude_without">
+                                <option value="exists">
+                                <option value="file">
+                                <option value="filled">
+                                <option value="greater_than">
+                                <option value="greater_than_or_equal">
+                                <option value="image">
+                                <option value="in">
+                                <option value="in_array">
+                                <option value="integer">
+                                <option value="ip_address">
+                                <option value="json">
+                                <option value="less_than">
+                                <option value="less_than_or_equal">
+                                <option value="lowercase">
+                                <option value="mac_address">
+                                <option value="max">
+                                <option value="max_digits">
+                                <option value="mime_types">
+                                <option value="mime_type">
+                                <option value="min">
+                                <option value="min_digits">
+                                <option value="missing">
+                                <option value="missing_if">
+                                <option value="missing_unless">
+                                <option value="missing_with">
+                                <option value="missing_with_all">
+                                <option value="multiple_of">
+                                <option value="not_in">
+                                <option value="not_regex">
+                                <option value="nullable">
+                                <option value="numeric">
+                                <option value="password">
+                                <option value="present">
+                                <option value="prohibited">
+                                <option value="prohibited_if">
+                                <option value="prohibited_unless">
+                                <option value="prohibits">
+                                <option value="regular_expression">
+                                <option value="required">
+                                <option value="required_if">
+                                <option value="required_unless">
+                                <option value="required_with">
+                                <option value="required_with_all">
+                                <option value="required_without">
+                                <option value="required_without_all">
+                                <option value="required_array_keys">
+                                <option value="same">
+                                <option value="size">
+                                <option value="sometimes">
+                                <option value="starts_with">
+                                <option value="string">
+                                <option value="timezone">
+                                <option value="unique">
+                                <option value="uppercase">
+                                <option value="url">
+                                <option value="ulid">
+                                <option value="uuid">
+                            </datalist>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <button type="button" class="btn btn-secondary font-weight-bold" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary font-weight-bold">Add</button>
+                <button type="button"
+                        class="btn btn-primary font-weight-bold"
+                        onclick="create_new_field();">Add
+                </button>
             </div>
         </div>
     </div>
@@ -378,6 +487,10 @@
                 this.type = type;
             }
 
+            title(title) {
+                this.title = title;
+            }
+
             required(required) {
                 this.required = (required === 'yes');
             }
@@ -387,9 +500,8 @@
             }
         }
 
-        var CSRF_TOKEN = '{{ csrf_token() }}';
-
         var FORM = {
+            _token : '{{ csrf_token() }}',
             model: null,
             pagination: 'default',
             type: 'web',
@@ -405,38 +517,69 @@
         }
 
         function form_model(element) {
-            FORM.model = $(element).val();
+            FORM.model = element.value;
         }
 
         function form_pagination(element) {
-            FORM.pagination = $(element).val();
+            FORM.pagination = element.value;
         }
 
         function form_type(element) {
-            FORM.type = $(element).val();
-            console.log(FORM)
+            FORM.type = (element).value;
         }
 
         function form_pattern(element) {
-            FORM.pattern = $(element).val();
+            FORM.pattern = element.value;
         }
 
         function form_options(key, element) {
             FORM.options[key] = (element.checked === true);
         }
 
-        form_send_backend() {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // Typical action to be performed when the document is ready:
-                    document.getElementById("demo").innerHTML = xhttp.responseText;
-                }
-            };
-            xhttp.open("GET", "filename", true);
-            xhttp.send();
+        function create_title_from_name(value) {
+            if (value.length > 0) {
+                let formatted = value.replaceAll(/([\- \|]+)/igmu, '_').toLowerCase();
+
+                document.getElementById('field-name').value = formatted;
+
+                document.getElementById('field-title').value = (formatted.charAt(0).toUpperCase() + formatted.slice(1))
+                    .replaceAll(/_([a-z])/igu, function (match) {
+                        return match.replace('_', ' ').toUpperCase();
+                    });
+            }
         }
 
+        function create_new_field() {
+
+            let field = new Field();
+
+            field.name(document.getElementById('field-name').value);
+
+            field.title(document.getElementById('field-title').value);
+
+            field.type(document.getElementById('field-type').value);
+
+            field.required(document.getElementById('field-required').value === 'yes');
+
+            field.rules(document.getElementById('field-rules').value.split('|')
+                .map((match) => match.trim()));
+
+            FORM.fields.push(field);
+
+            console.log(FORM)
+        }
+
+        function form_send_backend() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", '{{ route('crud.generators.store') }}', true);
+            xhttp.setRequestHeader('Content-type', 'application/json; charset=UTF-8')
+            xhttp.send(JSON.stringify(FORM));
+            xhttp.onload = function () {
+                if(xhttp.status === 201) {
+                    console.log("Post successfully created!")
+                }
+            }
+        }
 
         /*function fixSlashIssue(element) {
             return element.toString().match("(/[a-zA-Z]{1})", function (param) {
