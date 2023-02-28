@@ -18,8 +18,6 @@ class GeneratorController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return Application|Factory|View
      */
     public function index(): Factory|View|Application
     {
@@ -30,8 +28,6 @@ class GeneratorController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return Application|Factory|View
      */
     public function create(): Factory|View|Application
     {
@@ -42,9 +38,6 @@ class GeneratorController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  StoreGeneratorRequest  $request
-     * @return RedirectResponse
      */
     public function store(StoreGeneratorRequest $request): RedirectResponse
     {
@@ -58,9 +51,6 @@ class GeneratorController extends Controller
 
     /**
      * Display the specified resource.
-     *
-     * @param  Generator  $generator
-     * @return Application|Factory|View
      */
     public function show(Generator $generator): Factory|View|Application
     {
@@ -69,9 +59,6 @@ class GeneratorController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
-     * @param  Generator  $generator
-     * @return Application|Factory|View
      */
     public function edit(Generator $generator): Factory|View|Application
     {
@@ -82,10 +69,6 @@ class GeneratorController extends Controller
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  UpdateGeneratorRequest  $request
-     * @param  Generator  $generator
-     * @return RedirectResponse
      */
     public function update(UpdateGeneratorRequest $request, Generator $generator): RedirectResponse
     {
@@ -97,9 +80,6 @@ class GeneratorController extends Controller
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  Generator  $generator
-     * @return RedirectResponse
      */
     public function destroy(Generator $generator): RedirectResponse
     {
