@@ -20,7 +20,7 @@ return [
         'audit' => 'Change Audit',
         'migration' => 'Create Migrations',
         'factory' => 'Create Faker Factory',
-        'service' => 'Create a Service layer'
+        'service' => 'Create a Service layer',
     ],
 
     'model_defaults' => [
@@ -115,6 +115,6 @@ return [
             'mvc' => 'Model View Controller',
             'rdp' => 'Repository Design Pattern',
         ],
-        'default' => 'mvc'
-    ]
+        'default' => 'mvc',
+    ],
 ];
