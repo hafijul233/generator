@@ -3,8 +3,8 @@
 namespace Hafijul233\Generator\Commands;
 
 use Hafijul233\Generator\Support\Config\GenerateConfigReader;
-use Hafijul233\Generator\Support\Migrations\NameParser;
-use Hafijul233\Generator\Support\Migrations\SchemaParser;
+use Hafijul233\Generator\Support\NameParser;
+use Hafijul233\Generator\Support\SchemaParser;
 use Hafijul233\Generator\Support\Stub;
 use Hafijul233\Generator\Traits\ModuleCommandTrait;
 use Illuminate\Support\Str;

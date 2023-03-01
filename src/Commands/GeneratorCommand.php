@@ -2,9 +2,9 @@
 
 namespace Hafijul233\Generator\Commands;
 
+use Hafijul233\Generator\Exceptions\FileAlreadyExistException;
+use Hafijul233\Generator\Support\FileGenerator;
 use Illuminate\Console\Command;
-use Nwidart\Modules\Exceptions\FileAlreadyExistException;
-use Nwidart\Modules\Generators\FileGenerator;
 
 abstract class GeneratorCommand extends Command
 {
@@ -77,7 +77,7 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param  \Nwidart\Modules\Module  $module
+     * @param $module
      * @return string
      */
     public function getClassNamespace($module)

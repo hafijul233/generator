@@ -2,7 +2,6 @@
 
 namespace Hafijul233\Generator\Commands;
 
-use Hafijul233\Generator\Module;
 use Hafijul233\Generator\Support\Config\GenerateConfigReader;
 use Hafijul233\Generator\Support\Stub;
 use Hafijul233\Generator\Traits\ModuleCommandTrait;
@@ -75,7 +74,7 @@ class ListenerMakeCommand extends GeneratorCommand
         return $module->config('paths.generator.listener.namespace') ?: $module->config('paths.generator.listener.path', 'Listeners');
     }
 
-    protected function getEventName(Module $module)
+    protected function getEventName($module)
     {
         $namespace = $this->laravel['modules']->config('namespace').'\\'.$module->getStudlyName();
         $eventPath = GenerateConfigReader::read('event');

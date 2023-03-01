@@ -4,7 +4,6 @@ namespace Hafijul233\Generator\Commands;
 
 use Hafijul233\Generator\Support\Config\GenerateConfigReader;
 use Hafijul233\Generator\Support\Stub;
-use Hafijul233\Generator\Traits\CanClearModulesCache;
 use Hafijul233\Generator\Traits\ModuleCommandTrait;
 use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
@@ -13,7 +12,6 @@ use Symfony\Component\Console\Input\InputOption;
 class SeedMakeCommand extends GeneratorCommand
 {
     use ModuleCommandTrait;
-    use CanClearModulesCache;
 
     protected $argumentName = 'name';
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace Hafijul233\Generator\Generators;
+namespace Hafijul233\Generator\Support;
 
 use Hafijul233\Generator\Exceptions\FileAlreadyExistException;
 use Illuminate\Filesystem\Filesystem;
 
-class FileGenerator extends Generator
+class FileGenerator
 {
     /**
      * The path wil be used.
