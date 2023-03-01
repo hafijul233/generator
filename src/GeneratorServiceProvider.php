@@ -3,6 +3,7 @@
 namespace Hafijul233\Generator;
 
 use Illuminate\Support\ServiceProvider;
+
 class GeneratorServiceProvider extends ServiceProvider
 {
     /**
@@ -12,7 +13,7 @@ class GeneratorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../config/generator.php' => config_path('generator.php'),]);
+        $this->publishes([__DIR__.'/../config/generator.php' => config_path('generator.php')]);
 
 //        $this->loadTranslationsFrom(__DIR__ . '/../lang', 'form');
 
@@ -20,24 +21,24 @@ class GeneratorServiceProvider extends ServiceProvider
 //            __DIR__ . '/../lang' => $this->app->langPath('vendor/form'),
 //        ]);
 
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'generator');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'generator');
 
         $this->publishes([
-            __DIR__ . '/../resources/views' => resource_path('views/vendor/generator'),
+            __DIR__.'/../resources/views' => resource_path('views/vendor/generator'),
         ]);
 
         $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
         $this->publishes([
-            __DIR__ . '/../public' => public_path('vendor/generator'),
+            __DIR__.'/../public' => public_path('vendor/generator'),
         ], 'public');
 
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         if ($this->app->runningInConsole()) {
-/*            $this->commands([
-                FormCommand::class
-            ]);*/
+            /*            $this->commands([
+                            FormCommand::class
+                        ]);*/
         }
     }
 
@@ -49,7 +50,7 @@ class GeneratorServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__ . '/../config/generator.php', 'generator'
+            __DIR__.'/../config/generator.php', 'generator'
         );
     }
 }

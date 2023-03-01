@@ -10,10 +10,11 @@ use Illuminate\Database\Eloquent\Model;
 class Generator extends Model
 {
     protected $table = 'crud_generators';
+
     protected $fillable = ['model', 'pagination', 'type', 'pattern', 'options', 'fields'];
 
     protected $casts = [
         'options' => 'array',
-        'fields' => 'array'
+        'fields' => 'array',
     ];
 }

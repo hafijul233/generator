@@ -77,7 +77,6 @@ abstract class GeneratorCommand extends Command
     /**
      * Get class namespace.
      *
-     * @param $module
      * @return string
      */
     public function getClassNamespace($module)
