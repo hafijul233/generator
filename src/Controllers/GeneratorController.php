@@ -41,11 +41,11 @@ class GeneratorController extends Controller
      */
     public function store(StoreGeneratorRequest $request): RedirectResponse
     {
-        $generator = new Generator($request->all());
+        $generator = new Generator($request->except('_token'));
 
         $generator->save();
 
-        return redirect()->back();
+        return redirect()->route('crud.generators.index');
     }
 
     /**

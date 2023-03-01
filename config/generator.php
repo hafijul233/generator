@@ -16,7 +16,7 @@ return [
     ],
 
     'model_options' => [
-        'soft-delete' => 'Soft Delete',
+        'soft_delete' => 'Soft Delete',
         'audit' => 'Change Audit',
         'migration' => 'Create Migrations',
         'factory' => 'Create Faker Factory',
@@ -35,7 +35,6 @@ return [
             'email' => 'Email',
             'password' => 'Password',
             'url' => 'Website URL',
-
             'textarea' => 'Large Text (Textarea)',
         ],
         'Checkbox/Radio Fields' => [
@@ -47,7 +46,7 @@ return [
         ],
         'Number Fields' => [
             'integer' => 'Integer',
-            'float' => 'float',
+            'float' => 'Decimal',
             'money' => 'Money',
             'mobile' => 'Mobile',
         ],

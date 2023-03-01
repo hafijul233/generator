@@ -1,77 +1,132 @@
 @extends('generator::layout.generator')
 
-@section('title', 'Create')
+@section('title', 'Index')
 
 @push('style')
 
 @endpush
 
+@php
+
+
+    $field_types = [];
+    foreach (config('generator.field_types') as $group) {
+        $field_types = array_merge($field_types, $group);
+    }
+@endphp
+
 @section('content')
     <div class="container-fluid">
         <div class="card mt-3">
-            <h4 class="card-header bg-success text-white font-weight-bold text-center">CRUD Generator</h4>
+            <h4 class="card-header font-weight-bold text-center">CRUD Generator</h4>
             <div class="card-body">
-                <nav class="mb-3">
-                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-                           aria-controls="nav-home" aria-selected="true">Home</a>
-                        <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-                           aria-controls="nav-profile" aria-selected="false">Profile</a>
-                        <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
-                           aria-controls="nav-contact" aria-selected="false">Contact</a>
-                    </div>
-                </nav>
-                <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                        <div class="row">
-                            <div class="col-md-4">
-                                {!! \Form::nText('name', 'Full Namespace Path', null, true,
-                                ['placeholder' => 'Exclude Root namespace',
-                                 'title' => 'use slash for directory separator']) !!}
-                            </div>
-                            <div class="col-md-4">
-                                {!! \Form::nSelect('type', 'Resource Type',
-                                config('generator.resource_types.options'),
-                                 config('generator.resource_types.default'),
-                                  true) !!}
-                            </div>
-                            <div class="col-md-4">
-                                {!! \Form::nCheckbox('options', 'Model Option(s)', config('generator.model_options'), config('generator.model_defaults'), true)  !!}
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-12 table-responsive">
-                                <table class="table table-bordered table-hover">
-                                    <thead class="thead-light">
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Field Name</th>
-                                        <th scope="col">Field Type</th>
-                                        <th scope="col">Handle</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    @for($i=1; $i<=10; $i++)
-                                        <tr>
-                                            <th scope="row">{{ $i }}</th>
-                                            <td>{!! \Form::iText("name[{$i}]", "Name", null, true, null, null, ["placeholder" => 'Field Name']) !!}</td>
-                                            <td>{!! \Form::iSelect("type[{$i}]", "Type", config('generator.field_types'),'text', true, null, null, ["placeholder" => 'Field Type']) !!}</td>
-                                            <td>{!! \Form::iText("length[{$i}]", "Length", null, true, null, null, ["placeholder" => 'Field Length']) !!}</td>
-                                        </tr>
-                                    @endfor
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                <div class="row">
+                    <a href="{{ route('crud.generators.create')}}"
+                       class="mx-3 mb-3 mt-0 btn btn-block btn-primary font-weight-bold">
+                        Add New CRUD Resource
+                    </a>
+                    <div class="col-md-12 table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="thead-light">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">Pattern</th>
+                                <th scope="col">Pagination</th>
+                                <th scope="col">Options</th>
+                                <th scope="col">Fields</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($generators as $generator)
+                                <tr>
+                                    <th scope="row" rowspan="2"
+                                        style="align-items: center; vertical-align: middle; text-align: center;">
+                                        {{ $loop->iteration }}
+                                    </th>
+                                    <td width="30%">{{ $generator->model }}</td>
+                                    <td>{{ config("generator.resource_types.options.{$generator->type}") }}</td>
+                                    <td>{{ config("generator.arc_pattern.options.{$generator->pattern}") }}</td>
+                                    <td>{{ config("generator.pagination.options.{$generator->pagination}") }}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach(config('generator.model_options') as $key => $label)
+                                                <li>
+                                                    {{$label}}
+                                                    @if($generator->options[$key])
+                                                        ✅
+                                                    @else
+                                                        ❌
+                                                    @endif
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td class="text-center">
+                                        <button class="btn btn-primary mt-3">Fields</button>
+                                    </td>
+                                </tr>
+                                <tr id="resource-{{$loop->iteration}}">
+                                    <td colspan="6">
+                                        <table class="table table-bordered mb-0">
+                                            <thead class="thead-light">
+                                            <tr>
+                                                <td>#</td>
+                                                <td>Field Title</td>
+                                                <td>Field Name</td>
+                                                <td>Field Type</td>
+                                                <td>Required</td>
+                                                <td>Rules</td>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @forelse($generator->fields as $field)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $field['title'] }}</td>
+                                                    <td>{{ $field['name'] }}</td>
+                                                    <td>@if(isset($field_types[$field['type']]))
+                                                            {{ $field_types[$field['type']] }}
+                                                        @else
+                                                            N/A
+                                                        @endif</td>
+                                                    <td>
+                                                        @if($field['required'])
+                                                            Yes
+                                                        @else
+                                                            No
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @foreach($field['rules'] as $rule)
+                                                            @if($rule != null)
+                                                            <button class="btn badge badge-info text-white">
+                                                                {{$rule}}
+                                                            </button>
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
 
-                    </div>
-                    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5"> No Field Available</td>
+                                                </tr>
+                                            @endforelse
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="7" class="text-center">No Data Available</td>
+                                </tr>
+                            @endforelse
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
